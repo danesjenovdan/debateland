@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load i18n wagtailcore_tags static %}
+
+{% block body_class %}page page--home{% endblock %}
+
+{% block content %}
+
+<div class="row row-white">
+  <div class="container container-narrow">
+    <div class="row">
+      <div class="col-lg-7 order-last order-lg-first">
+        <h1>
+          <div class="spaced serif">Pravna mreža</div>
+          <div class="spaced">za varstvo demokracije</div>
+        </h1>
+        <hr>
+        {{ page.intro_text|safe }}
+      </div>
+      <div class="col-lg-5 order-first order-lg-last d-flex align-items-center">
+        <img class="main-logo img-fluid mb-4 mb-lg-0 ml-lg-5" src="{% static 'img/pmvd-ilustracija.png' %}" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-purple">
+  <div class="container container-narrow">
+    <div class="row">
+      <div class="col-lg-4 d-flex align-items-center">
+        <h2>
+          <div class="spaced serif">Pošči</div>
+          <div class="spaced">pomoč</div>
+        </h2>
+      </div>
+      <div class="col-lg-8">
+        <div class="float-right">
+          <a href="/pogosta-vprasanja/" class="square-button ml-1 float-left">
+            <div>
+              <img src="{% static 'img/faq.png' %}" />
+            </div>
+            <div>
+              <p>Pogosta vprašanja</p>
+            </div>
+          </a>
+          <a href="/pravna-mnenja/" class="square-button ml-1 float-left">
+            <div>
+              <img src="{% static 'img/mnenja.png' %}" />
+            </div>
+            <div>
+              <p>Pravna<br />mnenja</p>
+            </div>
+          </a>
+          <a href="/primeri-pritozb/" class="square-button ml-1 float-left">
+            <div>
+              <img src="{% static 'img/vzorci.png' %}" />
+            </div>
+            <div>
+              <p>Primeri<br />pritožb</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-white">
+  <div class="container container-narrow">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="mr-lg-5">
+          {{ page.description_text|safe }}
+        </div>
+        <div class="mr-lg-5">
+          <a class="btn btn-lg btn-outline-primary mt-4 mb-5 mb-lg-0" href="/o-mrezi/">Več o mreži &gt;&gt;&gt;</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="float-right">
+          <a href="/doniraj/" class="square-button mb-3">
+            <div>
+              <img src="{% static 'img/srce.png' %}" />
+            </div>
+            <div>
+              <h3>Doniraj</h3>
+              <p>Prispevaj sredstva za pomoč protestnikom.</p>
+            </div>
+          </a>
+          <a href="/pomagaj/" class="square-button mb-3">
+            <div>
+              <img src="{% static 'img/pomoc.png' %}" />
+            </div>
+            <div>
+              <h3>Pomagaj</h3>
+              <p>Prispevaj pravniško znanje.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-light-purple">
+  <div class="container container-narrow">
+    <div class="row mb-5">
+      <div class="col">
+        <h3>Zadnje novice</h3>
+      </div>
+    </div>
+    {% for novica in novice %}
+    <hr class="short">
+    <article class="row news-preview">
+      <div class="col-12">
+        <div class="ml-lg-4">
+          <h1>{{ novica.title }}</h1>
+          <time>{{ novica.date|date:'d. m. Y' }}</time>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="ml-lg-4">
+          {{ novica.body|safe }}
+        </div>
+      </div>
+      <div class="col-lg-3 d-flex align-items-center justify-content-center">
+        <a class="btn btn-outline-primary" href="{{ novica.url }}">Več &gt;&gt;&gt;</a>
+      </div>
+    </article>
+    {% endfor %}
+    <hr class="short">
+  </div>
+</div>
+
+{% endblock content %}

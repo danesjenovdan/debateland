@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load i18n wagtailcore_tags static %}
+
+{% block body_class %}page page--generic{% endblock %}
+
+{% block content %}
+
+<header class="row row-purple">
+  <div class="container container-narrow">
+    <div class="row">
+      <div class="col-sm-3 d-flex align-items-center">
+        <a href="/" class="home-link">
+          <h2>
+            <div class="spaced serif">Pravna mreža</div>
+            <div class="spaced">
+              za varstvo<br>
+              demokracije
+            </div>
+          </h2>
+        </a>
+      </div>
+      <div class="col-sm-9">
+        <div class="float-right mt-3 mt-sm-0">
+          <a href="/pogosta-vprasanja/" class="square-button ml-lg-3 float-left">
+            <div class="d-flex align-items-center mr-2">
+              <img src="{% static 'img/faq.png' %}" class="mr-1" />
+            </div>
+            <div>
+              <p>Pogosta vprašanja</p>
+            </div>
+          </a>
+          <a href="/pravna-mnenja/" class="square-button ml-1 ml-lg-3 float-left">
+            <div class="d-flex align-items-center mr-2">
+              <img src="{% static 'img/mnenja.png' %}" class="mr-1" />
+            </div>
+            <div>
+              <p>Pravna<br />mnenja</p>
+            </div>
+          </a>
+          <a href="/primeri-pritozb/" class="square-button ml-1 ml-lg-3 float-left">
+            <div class="d-flex align-items-center mr-2">
+              <img src="{% static 'img/vzorci.png' %}" class="mr-1" />
+            </div>
+            <div>
+              <p>Primeri<br />pritožb</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% for block in page.body %}
+  {% if block.block_type == 'DonationEmbed' %}
+  <iframe id="DonationEmbed" src="https://danesjenovdan.si/doniraj_pmvd/placaj/mesecno" border="0"></iframe>
+  {% elif block.block_type == 'heading' %}
+  <div class="row row-white row-block-{{ block.block_type }}">
+    <div class="container container-narrow">
+      <div class="row">
+        <div class="col-lg-7">
+          <h1>
+            <div class="spaced serif">{{ block.value.part_one }}</div>
+            <div class="spaced">{{ block.value.part_two }}</div>
+          </h1>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          {{ block.value.intro_text|safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% elif block.block_type == 'paragraph' %}
+  <div class="row row-light-purple row-block-{{ block.block_type }}">
+    <div class="container container-narrow">
+      <div class="row">
+        <div class="col">
+          {{ block.value|safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+
+{% endblock content %}
