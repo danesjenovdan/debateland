@@ -5,60 +5,18 @@
 
 {% block content %}
 
-<div class="row row-white">
+<div class="row row-cyan main">
   <div class="container container-narrow">
     <div class="row">
-      <div class="col-lg-7 order-last order-lg-first">
-        <h1>
-          <div class="spaced serif">Pravna mreža</div>
-          <div class="spaced">za varstvo demokracije</div>
-        </h1>
-        <hr>
-        {{ page.intro_text|safe }}
+      <div class="col-md-4 d-flex align-items-center">
+        <img class="main-logo img-fluid mb-md-4 pr-md-4 py-md-4" src="{% static 'img/header-logo.png' %}" />
       </div>
-      <div class="col-lg-5 order-first order-lg-last d-flex align-items-center">
-        <img class="main-logo img-fluid mb-4 mb-lg-0 ml-lg-5" src="{% static 'img/pmvd-ilustracija.png' %}" />
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row row-purple">
-  <div class="container container-narrow">
-    <div class="row">
-      <div class="col-lg-4 d-flex align-items-center">
-        <h2>
-          <div class="spaced serif">Pošči</div>
-          <div class="spaced">pomoč</div>
-        </h2>
-      </div>
-      <div class="col-lg-8">
-        <div class="float-right">
-          <a href="/pogosta-vprasanja/" class="square-button ml-1 float-left">
-            <div>
-              <img src="{% static 'img/faq.png' %}" />
-            </div>
-            <div>
-              <p>Pogosta vprašanja</p>
-            </div>
-          </a>
-          <a href="/pravna-mnenja/" class="square-button ml-1 float-left">
-            <div>
-              <img src="{% static 'img/mnenja.png' %}" />
-            </div>
-            <div>
-              <p>Pravna<br />mnenja</p>
-            </div>
-          </a>
-          <a href="/primeri-pritozb/" class="square-button ml-1 float-left">
-            <div>
-              <img src="{% static 'img/vzorci.png' %}" />
-            </div>
-            <div>
-              <p>Primeri<br />pritožb</p>
-            </div>
-          </a>
+      <div class="col-md-8 ">
+        <div>
+          <img class="main-text img-fluid pb-4" src="{% static 'img/header-text.png' %}" />
         </div>
+        <!-- TO DO: short intro text {{ page.intro_text|safe }} -->
+        <p>3 Debating Associations, 5 schools, 1 Web Agency and 4 Associated Partners to foster and integrate Debate in learning through three Open Educational Resources: two Teachers’ Guide for Primary School and Secondary School to Introducing Debate in the Curriculum and one Students' Toolkit for Civic Learning through Debate offering teachers and students a path for long term sustainable debate training.</p>
       </div>
     </div>
   </div>
@@ -67,35 +25,16 @@
 <div class="row row-white">
   <div class="container container-narrow">
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-7">
         <div class="mr-lg-5">
-          {{ page.description_text|safe }}
-        </div>
-        <div class="mr-lg-5">
-          <a class="btn btn-lg btn-outline-primary mt-4 mb-5 mb-lg-0" href="/o-mrezi/">Več o mreži &gt;&gt;&gt;</a>
+          <!-- TO DO: long intro text {{ page.description_text|safe }}-->
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur.
+            aut odit aut fugit, sed quia consequuntur magni. dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="float-right">
-          <a href="/doniraj/" class="square-button mb-3">
-            <div>
-              <img src="{% static 'img/srce.png' %}" />
-            </div>
-            <div>
-              <h3>Doniraj</h3>
-              <p>Prispevaj sredstva za pomoč protestnikom.</p>
-            </div>
-          </a>
-          <a href="/pomagaj/" class="square-button mb-3">
-            <div>
-              <img src="{% static 'img/pomoc.png' %}" />
-            </div>
-            <div>
-              <h3>Pomagaj</h3>
-              <p>Prispevaj pravniško znanje.</p>
-            </div>
-          </a>
-        </div>
+      <div class="col-lg-5 d-flex align-items-center">
+        <img class="img-fluid my-5 my-lg-0" src="{% static 'img/main-description.png' %}" />
       </div>
     </div>
   </div>
@@ -103,31 +42,159 @@
 
 <div class="row row-light-purple">
   <div class="container container-narrow">
-    <div class="row mb-5">
-      <div class="col">
-        <h3>Zadnje novice</h3>
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex align-items-center justify-content-center justify-center-lg-left">
+          <h2 class="mr-lg-2">
+            <span class="heading-primary">PROJECT</span> <span class="heading-italic">PARTNERS</span>
+          </h2>
+          <hr class="m-0 mb-2 d-none d-lg-block flex-grow-1">
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 my-3">
+        <div class="partner-card">
+          <img src="{% static 'img/Società-Nazionale-Debate-Italia@1.5x.png' %}" />
+          <h6>Società Nazionale Debate Italia</h6>
+          <p>The point of reference for individuals, organizations, schools, universities active in the development and promotion of Debate as a teaching practice and contribution to the growth of citizenship awareness. It is a project that gives meaning to the words and voice to people to re-establish an open, critical, proactive, dialogic society.</p>
+          <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="https://www.sn-di.it/" target="_blank">
+            <span>Website</span>
+            <div class="arrow-right"></div>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 my-3">
+        <div class="partner-card">
+          <img src="{% static 'img/Società-Nazionale-Debate-Italia@1.5x.png' %}" />
+          <h6>Fundación Educativa Activa-t</h6>
+          <p>A NGO focused on promoting dialogue as a teaching tool to promote students´learning and to give them voice through education.</p>
+          <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="https://www.findacionactivate.org" target="_blank">
+            <span>Website</span>
+            <div class="arrow-right"></div>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 my-3">
+        <div class="partner-card">
+          <img src="{% static 'img/Società-Nazionale-Debate-Italia@1.5x.png' %}" />
+          <h6>Za in proti, zavod za kulturo dialoga</h6>
+          <p>A national debate organisation in Slovenia, responsible for development and implementation of debate methodology in different educational environments on the national and international level. ZiP manages debate clubs on middle schools, high schools, and university level, organises debate competition each month and is implementing several public events such round tables and public forums.</p>
+          <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="http://zainproti.si/" target="_blank">
+            <span>Website</span>
+            <div class="arrow-right"></div>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 my-3">
+        <div class="partner-card">
+          <img src="{% static 'img/Società-Nazionale-Debate-Italia@1.5x.png' %}" />
+          <h6>Moletai gymnasium</h6>
+          <p>An institution providing a qualitative secondary education in a communal environment, seeking progress to every member of the community. Gymnasium is open to change, seeks to guarantee quality of learning and its value addition in an innovative way. We use innovative methods in the teaching/learning process, improving integration of school subjects in order to achieve individual progress of students, continuously improving teachers‘ qualification The school has experience in participating in „Erasmus+“ projects focused on career guidance, IT, building entrepreneurial skills, CLIL and STEM.</p>
+          <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="https://www.gimnazija.moletai.lt/" target="_blank">
+            <span>Website</span>
+            <div class="arrow-right"></div>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 my-3">
+        <div class="partner-card">
+          <img src="{% static 'img/Società-Nazionale-Debate-Italia@1.5x.png' %}" />
+          <h6>Miralmonte School</h6>
+          <p>A teaching cooperative located in Cartagena, Spain. The pursuit of academic excellence is our main aim.</p>
+          <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="https://colegiomiralmonte.es/" target="_blank">
+            <span>Website</span>
+            <div class="arrow-right"></div>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 my-3">
+        <div class="partner-card">
+          <img src="{% static 'img/Società-Nazionale-Debate-Italia@1.5x.png' %}" />
+          <h6>ITE "Enrico Tosi"</h6>
+          <p>A public High School for Economics, hosting 1,900 students and 170 teachers, located some 40 Km. north of Milan in a highly industrialized area in the north of Italy. Its focus has always been the internationalization of the curriculum, with the additional attention to debating which has led the school to be the coordinator of "We Debate - Italy" network, including more than 180 schools promoting debate and competing in regional, national and international contests. The school is also very active as a recognized training institution with several courses for students, internal and external teachers.</p>
+          <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="https://www.etosi.edu.it/" target="_blank">
+            <span>Website</span>
+            <div class="arrow-right"></div>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 my-3">
+        <div class="partner-card">
+          <img src="{% static 'img/Società-Nazionale-Debate-Italia@1.5x.png' %}" />
+          <h6>The English School</h6>
+          <p>A bilingual school, with English and Finnish as the languages of instruction, was founded in 1945. Founded upon Christian principle, the school's guiding value is the concept of human dignity.</p>
+          <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="http://www.engs.fi/" target="_blank">
+            <span>Website</span>
+            <div class="arrow-right"></div>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 my-3">
+        <div class="partner-card">
+          <img src="{% static 'img/Società-Nazionale-Debate-Italia@1.5x.png' %}" />
+          <h6>Rada Robiča Primary School in Limbuš</h6>
+          <p>Situated in the north-eastern part of Slovenia. It is a basic school – primary and lower secondary education, with 402 students aged 6-15, and 44 paid members of professional stuff.</p>
+          <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="https://www.oslimbus.si/" target="_blank">
+            <span>Website</span>
+            <div class="arrow-right"></div>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 my-3">
+        <div class="partner-card">
+          <img src="{% static 'img/Società-Nazionale-Debate-Italia@1.5x.png' %}" />
+          <h6>Today is a new day, Institute for other studies</h6>
+          <p>An NGO based in Slovenia that uses digital technology and the internet to create dialogue on public issues, facilitate participation, and push for transparency. Our mission is to promote open data and participatory decision-making processes on the internet by developing and implementing open source web-based tools and platforms for this purpose.</p>
+          <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="https://danesjenovdan.si/en" target="_blank">
+            <span>Website</span>
+            <div class="arrow-right"></div>
+          </a>
+        </div>
       </div>
     </div>
-    {% for novica in novice %}
-    <hr class="short">
-    <article class="row news-preview">
-      <div class="col-12">
-        <div class="ml-lg-4">
-          <h1>{{ novica.title }}</h1>
-          <time>{{ novica.date|date:'d. m. Y' }}</time>
+  </div>
+</div>
+
+<div class="row row-white">
+  <div class="container container-narrow">
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <div class="row mb-5">
+          <div class="col">
+            <h2 class="text-center">
+              <span class="heading-secondary">WHAT'S</span> <span class="heading-italic">NEW</span>
+            </h2>
+          </div>
         </div>
+        <hr class="short">
+        <article class="row news-preview">
+          <div class="col-12">
+            <div class="ml-lg-4">
+              <h1><!-- TO DO: {{ novica.title }}-->Lorem ipsum dolor sit amet</h1>
+              <time><!-- TO DO: {{ novica.date|date:'d. m. Y' }}-->14. 12. 2020</time>
+              <!-- TO DO: {{ novica.body|safe }}-->
+              <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <a class="btn btn-outline-primary" href="{{ novica.url }}"><div class="arrow-right"></div></a>
+            </div>
+          </div>
+        <!-- TO DO: brisi ta article -->
+        </article>
+        <hr class="short">
+        <article class="row news-preview">
+          <div class="col-12">
+            <div class="ml-lg-4">
+              <h1><!--{{ novica.title }}-->Lorem ipsum dolor sit amet</h1>
+              <time><!--{{ novica.date|date:'d. m. Y' }}-->14. 12. 2020</time>
+              <!--{{ novica.body|safe }}-->
+              <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <a class="btn btn-outline-primary" href="{{ novica.url }}"><div class="arrow-right"></div></a>
+            </div>
+          </div>
+        </article>
+        <!--{% for novica in novice %}-->
+        <!--{% endfor %}-->
+        <hr class="short">
       </div>
-      <div class="col-lg-9">
-        <div class="ml-lg-4">
-          {{ novica.body|safe }}
-        </div>
-      </div>
-      <div class="col-lg-3 d-flex align-items-center justify-content-center">
-        <a class="btn btn-outline-primary" href="{{ novica.url }}">Več &gt;&gt;&gt;</a>
-      </div>
-    </article>
-    {% endfor %}
-    <hr class="short">
+    </div>
   </div>
 </div>
 
