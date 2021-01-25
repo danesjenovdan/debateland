@@ -16,7 +16,7 @@
           <img class="main-text img-fluid pb-4" src="{% static 'img/header-text.png' %}" />
         </div>
         <!-- TO DO: short intro text {{ page.intro_text|safe }} -->
-        <p>3 Debating Associations, 5 schools, 1 Web Agency and 4 Associated Partners to foster and integrate Debate in learning through three Open Educational Resources: two Teachers’ Guide for Primary School and Secondary School to Introducing Debate in the Curriculum and one Students' Toolkit for Civic Learning through Debate offering teachers and students a path for long term sustainable debate training.</p>
+        {{ page.intro_text|safe }}
       </div>
     </div>
   </div>
@@ -28,9 +28,7 @@
       <div class="col-lg-7">
         <div class="mr-lg-5">
           <!-- TO DO: long intro text {{ page.description_text|safe }}-->
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-          <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur.
-            aut odit aut fugit, sed quia consequuntur magni. dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+          {{ page.description_text|safe }}
         </div>
       </div>
       <div class="col-lg-5 d-flex align-items-center">
@@ -166,33 +164,19 @@
           </div>
         </div>
         <hr class="short">
+        {% for novica in novice %}
         <article class="row news-preview">
           <div class="col-12">
             <div class="ml-lg-4">
-              <h1><!-- TO DO: {{ novica.title }}-->Lorem ipsum dolor sit amet</h1>
-              <time><!-- TO DO: {{ novica.date|date:'d. m. Y' }}-->14. 12. 2020</time>
-              <!-- TO DO: {{ novica.body|safe }}-->
-              <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <a class="btn btn-outline-primary" href="{{ novica.url }}"><div class="arrow-right"></div></a>
-            </div>
-          </div>
-        <!-- TO DO: brisi ta article -->
-        </article>
-        <hr class="short">
-        <article class="row news-preview">
-          <div class="col-12">
-            <div class="ml-lg-4">
-              <h1><!--{{ novica.title }}-->Lorem ipsum dolor sit amet</h1>
-              <time><!--{{ novica.date|date:'d. m. Y' }}-->14. 12. 2020</time>
-              <!--{{ novica.body|safe }}-->
-              <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <h1>{{ novica.title }}</h1>
+              <time>{{ novica.date|date:'d. m. Y' }}</time>
+              {{ novica.preview_text|safe }}
               <a class="btn btn-outline-primary" href="{{ novica.url }}"><div class="arrow-right"></div></a>
             </div>
           </div>
         </article>
-        <!--{% for novica in novice %}-->
-        <!--{% endfor %}-->
         <hr class="short">
+        {% endfor %}
       </div>
     </div>
   </div>

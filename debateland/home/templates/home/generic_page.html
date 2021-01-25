@@ -21,9 +21,7 @@
   <div class="row justify-content-center">
     <div class="col-lg-8">
       {% for block in page.body %}
-      {% if block.block_type == 'DonationEmbed' %}
-      <iframe id="DonationEmbed" src="https://danesjenovdan.si/doniraj_pmvd/placaj/mesecno" border="0"></iframe>
-      {% elif block.block_type == 'heading' %}
+      {% if block.block_type == 'heading' %}
       <div class="row row-white row-block-{{ block.block_type }}">
         <div class="container container-narrow">
           <div class="row">

@@ -1,0 +1,58 @@
+{% load i18n wagtailcore_tags static %}
+
+{% block content %}
+
+<header class="row row-cyan">
+    <div class="container container-narrow">
+        <div class="row">
+            <div class="col-12">
+                <a href="/" class="home-link">
+                    <img class="img-fluid py-lg-1" src="{% static 'img/header-logo-small.png' %}" />
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row mt-5 justify-content-center">
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="container container-narrow">
+                    <div class="row">
+                        <div class="col">
+                            <h1>
+                                <div class="heading-primary">{{ page.title|safe }}</div>
+                            </h1>
+                            <time>{{ page.date|date:'d. m. Y' }}</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% for block in page.body %}
+            {% if block.block_type == 'paragraph' %}
+            <div class="row row-white row-block-{{ block.block_type }}">
+                <div class="container container-narrow">
+                    <div class="row">
+                        <div class="col">
+                            {{ block.value|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+            <div class="d-flex justify-content-center align-items-center mb-5">
+                <a href="/" class="back-button">
+                    <button class="btn btn-lg btn-outline-primary mr-2"><div class="arrow-right"></div></button>
+                    <span>Back to landing page</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
