@@ -208,7 +208,8 @@ time {
 }
 
 .partner-card img {
-  width: 60%;
+  max-width: 80%;
+  max-height: 100px;
   margin-bottom: 15px;
 }
 
