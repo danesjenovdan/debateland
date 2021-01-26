@@ -1,0 +1,27 @@
+{% load static %}
+
+{% for newsletter in newsletters %}
+<div class="row white-card">
+    <div class="col-12 col-md-2 d-flex justify-content-center align-items-center mb-4 mb-md-0">
+        <img class="img-fluid" src="{% static 'img/letter.png' %}" alt="letter icon">
+    </div>
+    <div class="col-12 col-md-4 text-center text-md-left">
+        <h6 class="text-uppercase">{{ newsletter.title }}</h6>
+        {{ newsletter.text|safe }}
+    </div>
+    <div class="col-12 col-md-6">
+        <form>
+            <div class="form-group text-center text-md-left">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <div class="d-flex justify-content-center justify-content-md-start">
+                <button type="submit" class="btn btn-lg btn-outline-primary d-flex align-items-center">
+                    <span>SIGNUP</span>
+                    <div class="arrow-right d-inline-block"></div>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endfor %}

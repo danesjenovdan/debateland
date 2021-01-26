@@ -7,6 +7,38 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import Image
+from wagtail.snippets.models import register_snippet
+
+
+@register_snippet
+class Contact(models.Model):
+    title = models.TextField()
+    text = RichTextField()
+    showSnippet = models.BooleanField(default=False)
+
+    panels = [
+        FieldPanel('showSnippet', heading="Should this snippet be visible on the page?"),
+        FieldPanel('title'),
+        FieldPanel('text', classname="full")
+    ]
+
+    def __str__(self):
+        return self.title + ' ' + ('[VISIBLE]' if self.showSnippet else '[HIDDEN]')
+
+@register_snippet
+class Newsletter(models.Model):
+    title = models.TextField()
+    text = RichTextField()
+    showSnippet = models.BooleanField(default=False)
+
+    panels = [
+        FieldPanel('showSnippet', heading="Should this snippet be visible on the page?"),
+        FieldPanel('title'),
+        FieldPanel('text', classname="full"),
+    ]
+
+    def __str__(self):
+        return self.title + ' ' + ('[VISIBLE]' if self.showSnippet else '[HIDDEN]')
 
 
 @register_setting

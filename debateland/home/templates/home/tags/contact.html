@@ -1,0 +1,13 @@
+{% load static %}
+
+{% for contact in contacts %}
+<div class="row white-card">
+    <div class="col-12 col-md-2 d-flex justify-content-center align-items-center mb-4 mb-md-0">
+        <img class="img-fluid" src="{% static 'img/talking.png' %}" alt="talking icon">
+    </div>
+    <div class="col-12 col-md-10 text-center text-md-left">
+        <h6 class="text-uppercase">{{ contact.title }}</h6>
+        {{ contact.text|safe }}
+    </div>
+</div>
+{% endfor %}
