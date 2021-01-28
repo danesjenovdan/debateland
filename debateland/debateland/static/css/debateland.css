@@ -208,8 +208,7 @@ time {
 }
 
 .partner-card img {
-  max-width: 80%;
-  max-height: 100px;
+  height: 70px;
   margin-bottom: 15px;
 }
 
@@ -306,10 +305,13 @@ footer .form-control {
 }
 
 footer form span {
+  padding-left: 10px;
+  /*
   padding-right: 20px;
   font-size: 16px;
   font-weight: 700;
   font-family: "Balsamiq Sans", cursive;
+  */
 }
 
 footer form .arrow-right {
@@ -335,6 +337,10 @@ header a.home-link {
 header a.home-link,
 header a.home-link:hover {
   text-decoration: none;
+}
+
+header a.home-link div {
+  width: 240px;
 }
 
 header.row-cyan h2 {
