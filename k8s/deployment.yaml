@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debateland
+  labels:
+    app: debateland
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: debateland
+  template:
+    metadata:
+      labels:
+        app: debateland
+    spec:
+      containers:
+      - name: debateland
+        image: rg.fr-par.scw.cloud/djnd/debateland:latest
+        ports:
+        - containerPort: 8000
+        env:
+          - name: PYTHONPATH
+            value: /code:$PYTHONPATH
+          - name: DJANGO_SETTINGS_MODULE
+            value: debateland.settings.dev
