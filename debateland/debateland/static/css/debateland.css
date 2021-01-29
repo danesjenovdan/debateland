@@ -144,6 +144,11 @@ time {
   padding: 5px 15px;
   font-size: 12px;
 }
+@media (max-width: 575.98px) {
+  .btn {
+    font-size: 16px;
+  }
+}
 
 .btn-lg {
   padding: 5px 15px;
@@ -289,14 +294,16 @@ footer .white-card {
 footer p {
   font-size: 12px;
 }
-@media (max-width: 575.98px) {
-  footer p {
-    font-size: 16px;
-  }
-}
 
 footer form label {
   font-size: 12px;
+}
+
+@media (max-width: 575.98px) {
+  footer form label,
+  footer p {
+    font-size: 16px;
+  }
 }
 
 footer .form-control {
