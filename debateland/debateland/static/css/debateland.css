@@ -162,9 +162,14 @@ time {
 
 .btn-outline-primary:hover,
 .btn-outline-primary:not(:disabled):not(.disabled):active {
-  color: black;
+  color: white;
   border-color: #935bce;
   background-color: #935bce;
+}
+
+.btn-outline-primary:hover .arrow-right,
+.btn-outline-primary:not(:disabled):not(.disabled):active .arrow-right {
+  filter: invert(1);
 }
 
 .btn-outline-primary:focus,
@@ -255,33 +260,9 @@ footer .row-cyan {
   padding-bottom: 0;
 }
 
-footer nav {
-  padding-top: 35px;
-}
-
-footer nav a {
-  color: #d8d1e9;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 1.28px;
-}
-
 footer a,
 footer a:hover {
-  color: #d8d1e9;
-}
-
-footer nav .separator {
-  border-left: 1px solid #d8d1e9;
-  margin: 0 0.85rem;
-  height: 14px;
-}
-
-@media (max-width: 575.98px) {
-  footer nav .separator {
-    flex: 1;
-    border-left: none;
-  }
+  color: #935BCE;
 }
 
 footer .white-card {
@@ -401,7 +382,7 @@ header.row-cyan h2 {
 
 .row-block-paragraph blockquote {
   padding-left: 1.5em;
-  border-left: 3px solid #d8d1e9;
+  border-left: 3px solid #935BCE;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
@@ -435,7 +416,7 @@ header.row-cyan h2 {
 .row-block-paragraph a:hover,
 .row-block-paragraph a:active {
   font-weight: 600;
-  color: #674090;
+  color: #935BCE;
   text-decoration: underline;
 }
 
