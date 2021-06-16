@@ -129,6 +129,19 @@ time {
   }
 }
 
+.erasmus-plus-logo {
+  width: 250px;
+  left: 20px;
+  top: 20px;
+}
+@media (max-width: 1199.98px) {
+  .erasmus-plus-logo {
+    width: 200px;
+    left: 20px;
+    top: 20px;
+  }
+}
+
 /* ARROW ICON */
 .arrow-right {
   background-image: url("../img/arrow-icon.png");
