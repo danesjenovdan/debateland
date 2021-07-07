@@ -142,6 +142,26 @@ time {
   }
 }
 
+.text-title {
+  font-size: 48px;
+  line-height: 1;
+}
+@media (min-width: 768px) {
+  .text-title {
+    width: 70%;
+  }
+}
+
+.text-title span:first-child {
+  font-weight: 700;
+  color: #935bce;
+}
+
+.text-title span:last-child {
+  font-weight: 700;
+  color: #4fc9c3;
+}
+
 /* ARROW ICON */
 .arrow-right {
   background-image: url("../img/arrow-icon.png");
@@ -155,7 +175,7 @@ time {
   border-radius: 0;
   font-weight: 400;
   padding: 5px 15px;
-  font-size: 12px;
+  font-size: 14px;
 }
 @media (max-width: 575.98px) {
   .btn {
@@ -245,7 +265,7 @@ time {
 }
 
 .partner-card p {
-  font-size: 12px;
+  font-size: 14px;
 }
 @media (max-width: 575.98px) {
   .partner-card p {
@@ -286,10 +306,14 @@ footer .white-card {
 }
 
 footer p {
-  font-size: 12px;
+  font-size: 14px;
 }
 
-footer form label {
+footer .footer-disclaimer {
+  font-size: 13px;
+}
+
+footer form label, .content__gdprLegal p {
   font-size: 12px;
 }
 

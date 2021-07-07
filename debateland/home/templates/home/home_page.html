@@ -9,7 +9,7 @@
   <div class="container container-narrow">
     <div class="row py-5 py-sm-3">
       <div class="erasmus-plus-logo position-absolute">
-        <img class="" src="{% static 'img/erasmus+logo.svg' %}" />
+        <img src="{% static 'img/erasmus+logo.svg' %}" />
       </div>
     </div>
     <div class="row">
@@ -17,8 +17,8 @@
         <img class="main-logo img-fluid mb-md-4 pr-md-4 py-md-4" src="{% static 'img/header-logo.png' %}" />
       </div>
       <div class="col-md-8 ">
-        <div>
-          <img class="main-text img-fluid pb-4" src="{% static 'img/header-text.png' %}" />
+        <div class="text-uppercase pb-4 text-title">
+          <span>Debate</span> <span class="heading-italic">as a new approach to</span> <span>learning</span>
         </div>
         {{ page.intro_text|safe }}
       </div>
@@ -155,6 +155,7 @@
   </div>
 </div>
 
+{% if novice %}
 <div class="row row-white">
   <div class="container container-narrow">
     <div class="row justify-content-center">
@@ -184,5 +185,6 @@
     </div>
   </div>
 </div>
+{% endif %}
 
 {% endblock content %}
