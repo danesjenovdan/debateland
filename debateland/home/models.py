@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from novice.models import NovicaPage
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.contrib.settings.models import BaseSetting, register_setting
@@ -8,6 +9,43 @@ from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import Image
 from wagtail.snippets.models import register_snippet
+
+
+class ExternalLinkBlock(blocks.StructBlock):
+    name = blocks.CharBlock(label=_("Name"))
+    url = blocks.URLBlock(label=_("URL"))
+
+    class Meta:
+        label = _("External link")
+        icon = "link"
+
+
+class PageLinkBlock(blocks.StructBlock):
+    name = blocks.CharBlock(
+        required=False,
+        label=_("Name"),
+        help_text=_("If empty, subpage title will be used"),
+    )
+    page = blocks.PageChooserBlock(label=_("Subpage"))
+
+    class Meta:
+        label = _("Link to a subpage")
+        icon = "link"
+
+
+@register_setting(icon="cog")
+class MetaSettings(BaseSetting):
+    header_links = StreamField(
+        [
+            ("page_link", PageLinkBlock()),
+            ("external_link", ExternalLinkBlock()),
+        ],
+        verbose_name=_("Header links"),
+    )
+
+    panels = [
+        StreamFieldPanel("header_links"),
+    ]
 
 
 @register_snippet

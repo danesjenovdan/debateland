@@ -129,16 +129,12 @@ time {
   }
 }
 
-.erasmus-plus-logo {
-  width: 250px;
-  left: 20px;
-  top: 20px;
+.erasmus-plus-logo, .site-logo {
+  height: 3rem;
 }
 @media (max-width: 1199.98px) {
   .erasmus-plus-logo {
     width: 200px;
-    left: 20px;
-    top: 20px;
   }
 }
 
@@ -340,28 +336,26 @@ footer .footer-logo {
 }
 
 /* HEADER */
-header.row-cyan {
-  padding-top: 18px;
-  padding-bottom: 18px;
+.header {
+  z-index: 100;
+  background-color: #ECF9F8;
+  top: 0;
+  border-bottom: 1px solid #212529;
 }
-
-header a.home-link {
-  display: block;
+.header .logo img {
+  width: 6rem;
 }
-
-header a.home-link,
-header a.home-link:hover {
-  text-decoration: none;
+.header .nav-link {
+  color: #212529;
+  font-size: 1rem;
+  line-height: 1rem;
+  text-transform: uppercase;
 }
-
-header a.home-link div {
-  width: 240px;
+.header .nav-link:hover {
+  text-decoration: underline;
 }
-
-header.row-cyan h2 {
-  font-size: 18px;
-  margin: -0.25rem;
-  padding: 0.25rem;
+.header .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.125rem;
 }
 
 /* PARAGRAPH BLOCKS */

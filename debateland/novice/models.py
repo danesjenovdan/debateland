@@ -7,6 +7,9 @@ from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
 
 class NovicaPage(Page):
+    class Meta:
+        verbose_name = 'Newspage'
+
     date = models.DateField()
     preview_text = RichTextField(blank=False, null=False, default='')
     body = StreamField([
