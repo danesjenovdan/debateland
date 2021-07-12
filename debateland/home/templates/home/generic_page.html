@@ -1,62 +1,20 @@
 {% extends "base.html" %}
 {% load i18n wagtailcore_tags static %}
 
-{% block body_class %}page page--generic{% endblock %}
-
+sfsfdsfdsfds
 {% block content %}
 
-<header class="row row-cyan">
-  <div class="container container-narrow">
-    <div class="row">
-      <div class="col-12">
-        <a href="/" class="home-link">
-          <img class="img-fluid py-lg-1" src="{% static 'img/header-logo-small.svg' %}" />
-        </a>
-      </div>
-    </div>
-  </div>
-</header>
+{% block page_body %}
 
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-8">
-      {% for block in page.body %}
-      {% if block.block_type == 'heading' %}
-      <div class="row row-white row-block-{{ block.block_type }}">
-        <div class="container container-narrow">
-          <div class="row">
-            <div class="col">
-              <h1>
-                <div class="heading-primary"><!-- TO DO: {{ block.value.part_one }} -->THIS IS HEADING 1</div>
-              </h1>
-              <time><!-- TO DO: {{ novica.date|date:'d. m. Y' } }-->14. 12. 2020</time>
-            </div>
-          </div>
-        </div>
-      </div>
-      {% elif block.block_type == 'paragraph' %}
-      <div class="row row-white row-block-{{ block.block_type }}">
-        <div class="container container-narrow">
-          <div class="row">
-            <div class="col">
-              {{ block.value|safe }}
-            </div>
-          </div>
-        </div>
-      </div>
-      {% endif %}
-      {% endfor %}
+{% for block in page.body %}
+{% include_block block %}
+{% endfor %}
 
-      <div class="d-flex justify-content-center align-items-center mb-5">
-        <a href="/" class="back-button">
-          <button class="btn btn-lg btn-outline-primary mr-2"><div class="arrow-right"></div></button>
-          <span>Back to landing page</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
+{% endblock %}
 
 {% endblock content %}
+
+
+{% block body_class %}page page--generic{% endblock %}
+
+

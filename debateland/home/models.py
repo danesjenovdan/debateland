@@ -8,6 +8,7 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import Image
+from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.models import register_snippet
 
 
@@ -31,6 +32,132 @@ class PageLinkBlock(blocks.StructBlock):
     class Meta:
         label = _("Link to a subpage")
         icon = "link"
+
+
+class ContentBlock(blocks.StreamBlock):
+    headline = blocks.StructBlock(
+        [
+            ('title_purple', blocks.CharBlock(label=_('Title - first part (purple font)'))),
+            ('title_black', blocks.CharBlock(label=_('Title - second part (black font)'))),
+            ('description', blocks.RichTextBlock(required=False, label=_('Description'))),
+            ('image', ImageChooserBlock(required=False, label=_('Image'))),
+            ('position', blocks.ChoiceBlock(
+                choices=[
+                    ('left', 'Left'),
+                    ('right', 'Right'),
+                ],
+                label=_('Image position')
+            )),
+        ],
+        label=_('Headline'),
+        template='home/blocks/headline.html',
+        icon='title',
+    )
+    rich_text = blocks.StructBlock(
+        [
+            ('position', blocks.ChoiceBlock(
+                choices=[
+                    ('left', 'Left'),
+                    ('center', 'Center'),
+                    ('right', 'Right'),
+                ],
+                label=_('Text alignment')
+            )),
+            ('aligned_text', blocks.StreamBlock(
+                [
+                    ('text', blocks.RichTextBlock(
+                        label=_('Text'),
+                    )),
+                ],
+                label=_('Rich text'),
+            )),
+        ],
+        label=_('Rich text'),
+        template='home/blocks/rich_text.html',
+        icon='pilcrow',
+    )
+    double_cards  = blocks.StructBlock(
+        [
+            ('text1', blocks.CharBlock(label=_('Text in left card'))),
+            ('image1', ImageChooserBlock(label=_('Image in left card'))),
+            ('text2', blocks.CharBlock(label=_('Text in right card'))),
+            ('image2', ImageChooserBlock(label=_('Image in right card'))),
+        ],
+        label=_('Two cards'),
+        template='home/blocks/double_cards.html',
+        icon='title',
+    )
+    triple_cards  = blocks.StructBlock(
+        [
+            ('title_big1', blocks.CharBlock(label=_('Title 1'))),
+            ('title_small1', blocks.CharBlock(required=False, label=_('Subtitle 1'))),
+            ('description1', blocks.CharBlock(label=_('Description 1'))),
+            ('page1', blocks.PageChooserBlock(
+                required=False,
+                label=_('Link to page'),
+            )),
+            ('url1', blocks.URLBlock(
+                required=False,
+                label=_('External link'),
+            )),
+            ('title_big2', blocks.CharBlock(label=_('Title 2'))),
+            ('title_small2', blocks.CharBlock(required=False, label=_('Subtitle 2'))),
+            ('description2', blocks.CharBlock(label=_('Description 2'))),
+            ('page2', blocks.PageChooserBlock(
+                required=False,
+                label=_('Link to page'),
+            )),
+            ('url2', blocks.URLBlock(
+                required=False,
+                label=_('External link'),
+            )),
+            ('title_big3', blocks.CharBlock(label=_('Title 3'))),
+            ('title_small3', blocks.CharBlock(required=False, label=_('Subtitle 3'))),
+            ('description3', blocks.CharBlock(label=_('Description 3'))),
+            ('page3', blocks.PageChooserBlock(
+                required=False,
+                label=_('Link to page'),
+            )),
+            ('url3', blocks.URLBlock(
+                required=False,
+                label=_('External link'),
+            )),
+        ],
+        label=_('Three cards'),
+        template='home/blocks/triple_cards.html',
+        icon='title',
+    )
+
+    class Meta:
+        label = _('Content')
+        icon = 'snippet'
+
+
+class ColorSectionBlock(blocks.StructBlock):
+    color = blocks.ChoiceBlock(
+        choices=[
+            ('white', 'White'),
+            ('purple', 'Purple'),
+            ('orange', 'Orange'),
+            ('green', 'Green'),
+        ],
+        label=_('Background color'),
+    )
+    body = ContentBlock()
+
+    class Meta:
+        label = _('Content section with color')
+        template = 'home/blocks/color_section.html'
+        icon = 'snippet'
+
+
+class SectionBlock(blocks.StreamBlock):
+    color_section = ColorSectionBlock()
+
+    class Meta:
+        label = _('Content section')
+        template = 'home/blocks/section.html'
+        icon = 'snippet'
 
 
 @register_setting(icon="cog")
@@ -112,15 +239,11 @@ class HomePage(Page):
 
 
 class GenericPage(Page):
-    body = StreamField([
-        ('heading', blocks.StructBlock([
-            ('part_one', blocks.CharBlock(required=False)),
-            ('part_two', blocks.CharBlock(required=False)),
-            ('intro_text', blocks.RichTextBlock(required=False)),
-        ], icon='title')),
-        ('paragraph', blocks.RichTextBlock()),
-        ('DonationEmbed', blocks.StaticBlock(admin_text='Donation embed'))
-    ])
+    body = StreamField(
+        [('section', SectionBlock())],
+        verbose_name=_('Content'),
+        default='',
+    )
 
     content_panels = Page.content_panels + [
         StreamFieldPanel('body'),

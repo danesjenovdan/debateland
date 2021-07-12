@@ -1,0 +1,15 @@
+{% load wagtailimages_tags %}
+
+<div class="row headline align-items-center {% if value.position == 'right' %}flex-row-reverse{% endif %}">
+    {% if value.image %}
+    <div class="col-12 col-lg-5 d-flex align-items-center">
+        <div class="w-100 text-center">{% image value.image width-1100 class="main-logo img-fluid" %}</div>
+    </div>
+    {% endif %}
+    <div class="text-center {% if value.image %}col-12 col-lg-7 text-lg-left{% else %}col-12 col-lg-10 offset-lg-1 justify-content-center{% endif %}">
+        <div class="text-uppercase pb-4">
+            <span class="heading-primary">{{ value.title_purple }}</span> <span class="heading-italic">{{ value.title_black }}</span>
+        </div>
+        {% if value.description %}{{ value.description|safe }}{% endif %}
+    </div>
+</div>

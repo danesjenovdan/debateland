@@ -45,6 +45,21 @@ body {
   padding-bottom: 60px;
 }
 
+.bg-section--orange {
+  background-color: #fff7f4;
+}
+.bg-section--purple {
+  background-color: #F3F0FA;
+}
+.bg-section--green {
+  background-color: #ECF9F8;
+}
+
+.bg-section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
 h1,
 h2,
 h3,
@@ -158,12 +173,57 @@ time {
   color: #4fc9c3;
 }
 
+.headline {
+  font-size: 3rem;
+  font-weight: 700;
+}
+.headline p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .headline p {
+    text-align: left;
+  }
+}
+
+.rich-text h2, .rich-text h3, .rich-text h4 {
+  margin-bottom: 1rem;
+}
+.rich-text p {
+  margin-bottom: 2rem;
+}
+
 /* ARROW ICON */
 .arrow-right {
   background-image: url("../img/arrow-icon.png");
   background-size: contain;
   width: 22px;
   height: 19px;
+}
+
+/* CARDS */
+.box {
+  border: 2px solid #000;
+}
+.box span {
+  padding-right: 20px;
+}
+.box a {
+  margin-top: 0.5rem;
+}
+
+.double-cards .box div {
+  min-width: 33%;
+}
+
+.double-cards .box img {
+  max-width: 200px;
+}
+
+.double-cards .box p {
+  font-size: 1.25rem;
 }
 
 /* BUTTONS */
@@ -356,6 +416,10 @@ footer .footer-logo {
 }
 .header .navbar-toggler:focus {
   box-shadow: 0 0 0 0.125rem;
+}
+.header .navbar-toggler-icon {
+  width: unset;
+  height: unset;
 }
 
 /* PARAGRAPH BLOCKS */
