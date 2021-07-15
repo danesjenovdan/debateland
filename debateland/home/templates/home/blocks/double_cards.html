@@ -1,24 +1,46 @@
-{% load wagtailimages_tags %}
+{% load wagtailimages_tags wagtailcore_tags %}
 
-<div class="row double-cards">
+<div class="row cards">
     <div class="col-12 col-md-6 p-3">
-        <div class="box p-4 h-100">
-            <div class="row h-100">
-                <div class="col-12 col-lg-8 d-lg-flex align-items-lg-center">
-                    <h4 class="p-2 text-uppercase text-center text-lg-left">{{ value.text1 }}</h4>
-                </div>
-                <div class="col-12 col-lg-4 d-lg-flex align-items-lg-center text-center">{% image value.image1 max-400x400 class="img-fluid w-100" %}</div>
+        <div class="box h-100 p-4 d-flex flex-column">
+            {% if value.title_big1 %}
+            <h2 class="mb-3">{{ value.title_big1 }}</h2>
+            {% endif %}
+            {% if value.title_small1 %}
+            <h4 class="mb-3">{{ value.title_small1 }}</h4>
+            {% endif %}
+            {% if value.description1 %}
+            <p>{{ value.description1 }}</p>
+            {% endif %}
+            {% if value.url1 or value.page1 %}
+            <div>
+                <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="{% if value.url1 %}{{ value.url1 }}{% elif value.page1 %}{% pageurl value.page1 %}{% endif %}" target="_blank">
+                    <span>{{ value.button1 }}</span>
+                    <div class="arrow-right"></div>
+                </a>
             </div>
+            {% endif %}
         </div>
     </div>
     <div class="col-12 col-md-6 p-3">
-        <div class="box p-4 h-100">
-            <div class="row h-100">
-                <div class="col-12 col-lg-8 d-lg-flex align-items-lg-center">
-                    <h4 class="p-2 text-uppercase text-center text-lg-left">{{ value.text2 }}</h4>
-                </div>
-                <div class="col-12 col-lg-4 d-lg-flex align-items-lg-center text-center">{% image value.image2 max-400x400 class="img-fluid w-100" %}</div>
+        <div class="box h-100 p-4 d-flex flex-column">
+            {% if value.title_big1 %}
+            <h2 class="mb-3">{{ value.title_big1 }}</h2>
+            {% endif %}
+            {% if value.title_small1 %}
+            <h4 class="mb-3">{{ value.title_small1 }}</h4>
+            {% endif %}
+            {% if value.description1 %}
+            <p>{{ value.description1 }}</p>
+            {% endif %}
+            {% if value.url1 or value.page1 %}
+            <div>
+                <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="{% if value.url1 %}{{ value.url1 }}{% elif value.page1 %}{% pageurl value.page1 %}{% endif %}" target="_blank">
+                    <span>{{ value.button1 }}</span>
+                    <div class="arrow-right"></div>
+                </a>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

@@ -1,13 +1,13 @@
 {% load wagtailimages_tags wagtailcore_tags %}
 
-<div class="row triple-cards">
+<div class="row cards">
     <div class="col-12 col-md-4 p-3">
         <div class="box h-100 p-4 d-flex flex-column">
             {% if value.title_big1 %}
-            <h2 class="mb-3 text-uppercase">{{ value.title_big1 }}</h2>
+            <h2 class="mb-3">{{ value.title_big1 }}</h2>
             {% endif %}
             {% if value.title_small1 %}
-            <h4 class="mb-3 text-uppercase">{{ value.title_small1 }}</h4>
+            <h4 class="mb-3">{{ value.title_small1 }}</h4>
             {% endif %}
             {% if value.description1 %}
             <p>{{ value.description1 }}</p>
@@ -15,7 +15,7 @@
             {% if value.url1 or value.page1 %}
             <div>
                 <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="{% if value.url1 %}{{ value.url1 }}{% elif value.page1 %}{% pageurl value.page1 %}{% endif %}" target="_blank">
-                    <span>Website</span>
+                    <span>{{ value.button1 }}</span>
                     <div class="arrow-right"></div>
                 </a>
             </div>
@@ -25,10 +25,10 @@
     <div class="col-12 col-md-4 p-3">
         <div class="box h-100 p-4 d-flex flex-column">
             {% if value.title_big2 %}
-            <h2 class="mb-3 text-uppercase">{{ value.title_big2 }}</h2>
+            <h2 class="mb-3">{{ value.title_big2 }}</h2>
             {% endif %}
             {% if value.title_small2 %}
-            <h4 class="mb-3 text-uppercase">{{ value.title_small2 }}</h4>
+            <h4 class="mb-3">{{ value.title_small2 }}</h4>
             {% endif %}
             {% if value.description2 %}
             <p>{{ value.description2 }}</p>
@@ -36,7 +36,7 @@
             {% if value.url2 or value.page2 %}
             <div>
                 <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="{% if value.url2 %}{{ value.url2 }}{% elif value.page2 %}{% pageurl value.page2 %}{% endif %}" target="_blank">
-                    <span>Website</span>
+                    <span>{{ value.button2 }}</span>
                     <div class="arrow-right"></div>
                 </a>
             </div>
@@ -46,10 +46,10 @@
     <div class="col-12 col-md-4 p-3">
         <div class="box h-100 p-4 d-flex flex-column">
             {% if value.title_big3 %}
-            <h2 class="mb-3 text-uppercase">{{ value.title_big3 }}</h2>
+            <h2 class="mb-3">{{ value.title_big3 }}</h2>
             {% endif %}
             {% if value.title_small3 %}
-            <h4 class="mb-3 text-uppercase">{{ value.title_small3 }}</h4>
+            <h4 class="mb-3">{{ value.title_small3 }}</h4>
             {% endif %}
             {% if value.description3 %}
             <p>{{ value.description3 }}</p>
@@ -57,7 +57,7 @@
             {% if value.url3 or value.page3 %}
             <div>
                 <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="{% if value.url3 %}{{ value.url3 }}{% elif value.page3 %}{% pageurl value.page3 %}{% endif %}" target="_blank">
-                    <span>Website</span>
+                    <span>{{ value.button3 }}</span>
                     <div class="arrow-right"></div>
                 </a>
             </div>

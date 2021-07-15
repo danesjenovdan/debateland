@@ -78,20 +78,10 @@ class ContentBlock(blocks.StreamBlock):
     )
     double_cards  = blocks.StructBlock(
         [
-            ('text1', blocks.CharBlock(label=_('Text in left card'))),
-            ('image1', ImageChooserBlock(label=_('Image in left card'))),
-            ('text2', blocks.CharBlock(label=_('Text in right card'))),
-            ('image2', ImageChooserBlock(label=_('Image in right card'))),
-        ],
-        label=_('Two cards'),
-        template='home/blocks/double_cards.html',
-        icon='title',
-    )
-    triple_cards  = blocks.StructBlock(
-        [
             ('title_big1', blocks.CharBlock(label=_('Title 1'))),
             ('title_small1', blocks.CharBlock(required=False, label=_('Subtitle 1'))),
             ('description1', blocks.CharBlock(label=_('Description 1'))),
+            ('button1', blocks.CharBlock(required=False, label=_('Button text 1'))),
             ('page1', blocks.PageChooserBlock(
                 required=False,
                 label=_('Link to page'),
@@ -103,6 +93,38 @@ class ContentBlock(blocks.StreamBlock):
             ('title_big2', blocks.CharBlock(label=_('Title 2'))),
             ('title_small2', blocks.CharBlock(required=False, label=_('Subtitle 2'))),
             ('description2', blocks.CharBlock(label=_('Description 2'))),
+            ('button2', blocks.CharBlock(required=False, label=_('Button text 2'))),
+            ('page2', blocks.PageChooserBlock(
+                required=False,
+                label=_('Link to page'),
+            )),
+            ('url2', blocks.URLBlock(
+                required=False,
+                label=_('External link'),
+            )),
+        ],
+        label=_('Two cards'),
+        template='home/blocks/double_cards.html',
+        icon='title',
+    )
+    triple_cards  = blocks.StructBlock(
+        [
+            ('title_big1', blocks.CharBlock(label=_('Title 1'))),
+            ('title_small1', blocks.CharBlock(required=False, label=_('Subtitle 1'))),
+            ('description1', blocks.CharBlock(label=_('Description 1'))),
+            ('button1', blocks.CharBlock(required=False, label=_('Button text 1'))),
+            ('page1', blocks.PageChooserBlock(
+                required=False,
+                label=_('Link to page'),
+            )),
+            ('url1', blocks.URLBlock(
+                required=False,
+                label=_('External link'),
+            )),
+            ('title_big2', blocks.CharBlock(label=_('Title 2'))),
+            ('title_small2', blocks.CharBlock(required=False, label=_('Subtitle 2'))),
+            ('description2', blocks.CharBlock(label=_('Description 2'))),
+            ('button2', blocks.CharBlock(required=False, label=_('Button text 2'))),
             ('page2', blocks.PageChooserBlock(
                 required=False,
                 label=_('Link to page'),
@@ -114,6 +136,7 @@ class ContentBlock(blocks.StreamBlock):
             ('title_big3', blocks.CharBlock(label=_('Title 3'))),
             ('title_small3', blocks.CharBlock(required=False, label=_('Subtitle 3'))),
             ('description3', blocks.CharBlock(label=_('Description 3'))),
+            ('button3', blocks.CharBlock(required=False, label=_('Button text 3'))),
             ('page3', blocks.PageChooserBlock(
                 required=False,
                 label=_('Link to page'),

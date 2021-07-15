@@ -144,12 +144,21 @@ time {
   }
 }
 
-.erasmus-plus-logo, .site-logo {
-  height: 3rem;
+.site-logo {
+  height: 2rem;
 }
-@media (max-width: 1199.98px) {
+
+.erasmus-plus-logo {
+  height: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .site-logo {
+    height: 3rem;
+  }
+
   .erasmus-plus-logo {
-    width: 200px;
+    height: 2.5rem;
   }
 }
 
@@ -197,10 +206,11 @@ time {
 
 /* ARROW ICON */
 .arrow-right {
-  background-image: url("../img/arrow-icon.png");
+  background-image: url("../img/arrow-icon.svg");
   background-size: contain;
-  width: 22px;
-  height: 19px;
+  background-repeat: no-repeat;
+  min-width: 20px;
+  min-height: 20px;
 }
 
 /* CARDS */
@@ -209,20 +219,13 @@ time {
 }
 .box span {
   padding-right: 20px;
+  word-break: break-word;
 }
 .box a {
   margin-top: 0.5rem;
 }
 
-.double-cards .box div {
-  min-width: 33%;
-}
-
-.double-cards .box img {
-  max-width: 200px;
-}
-
-.double-cards .box p {
+.box p {
   font-size: 1.25rem;
 }
 
