@@ -245,10 +245,19 @@ class OgSettings(BaseSetting):
 class HomePage(Page):
     intro_text = RichTextField(blank=True, null=True)
     description_text = RichTextField(blank=True, null=True)
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        verbose_name=_('Slika v drugi sekciji'),
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
 
     content_panels = Page.content_panels + [
         FieldPanel('intro_text', classname="full"),
-        FieldPanel('description_text', classname="full")
+        FieldPanel('description_text', classname="full"),
+        ImageChooserPanel('image'),
     ]
 
     parent_page_types = []

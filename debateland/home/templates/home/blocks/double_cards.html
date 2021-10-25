@@ -24,19 +24,19 @@
     </div>
     <div class="col-12 col-md-6 p-3">
         <div class="box h-100 p-4 d-flex flex-column">
-            {% if value.title_big1 %}
-            <h2 class="mb-3">{{ value.title_big1 }}</h2>
+            {% if value.title_big2 %}
+            <h2 class="mb-3">{{ value.title_big2 }}</h2>
             {% endif %}
-            {% if value.title_small1 %}
-            <h4 class="mb-3">{{ value.title_small1 }}</h4>
+            {% if value.title_small2 %}
+            <h4 class="mb-3">{{ value.title_small2 }}</h4>
             {% endif %}
-            {% if value.description1 %}
-            <p>{{ value.description1 }}</p>
+            {% if value.description2 %}
+            <p>{{ value.description2 }}</p>
             {% endif %}
-            {% if value.url1 or value.page1 %}
+            {% if value.url2 or value.page2 %}
             <div>
-                <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="{% if value.url1 %}{{ value.url1 }}{% elif value.page1 %}{% pageurl value.page1 %}{% endif %}" target="_blank">
-                    <span>{{ value.button1 }}</span>
+                <a class="btn btn-lg btn-outline-primary d-inline-flex align-items-center" href="{% if value.url2 %}{{ value.url2 }}{% elif value.page2 %}{% pageurl value.page2 %}{% endif %}" target="_blank">
+                    <span>{{ value.button2 }}</span>
                     <div class="arrow-right"></div>
                 </a>
             </div>
