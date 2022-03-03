@@ -50,6 +50,10 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
+        <!-- facebook js sdk  -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0" nonce="rf76coTD"></script>
+
         <div class="flex-page-height">
 
             <div class="header position-sticky">
@@ -108,8 +112,23 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 mt-4">
+                            <div class="col-lg-6 mt-4">
                                 {% contact %}
+                            </div>
+                            <div class="col-lg-6 mt-4">
+                                <div class="row white-card">
+                                    <div class="col-12 col-md-2 col-lg-4 d-flex justify-content-center align-items-center mb-4 mb-md-0">
+                                        <img class="img-fluid" src="{% static 'img/friends.png' %}" alt="friends icon">
+                                    </div>
+                                    <div class="col-12 col-md-10 col-lg-8 text-center text-md-left">
+                                        <h6>FOLLOW US ON FACEBOOK!</h6>
+                                        <div class="fb-page" data-href="https://www.facebook.com/DNLAofficial" data-tabs="" data-width="275" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                                            <blockquote cite="https://www.facebook.com/DNLAofficial" class="fb-xfbml-parse-ignore">
+                                                <a href="https://www.facebook.com/DNLAofficial">Debate As a New Approach to Learning</a>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-12 mt-4">
                                 {% newsletter %}
