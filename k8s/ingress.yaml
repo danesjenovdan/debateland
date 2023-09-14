@@ -4,6 +4,7 @@ metadata:
   name: debateland-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/proxy-body-size: 10m
 spec:
   rules:
   - host: debateland.k8s.djnd.si
