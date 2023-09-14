@@ -1,8 +1,11 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from novice.models import NovicaPage
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.contrib.settings.models import (
+    BaseGenericSetting,
+    register_setting,
+)
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
@@ -184,17 +187,18 @@ class SectionBlock(blocks.StreamBlock):
 
 
 @register_setting(icon="cog")
-class MetaSettings(BaseSetting):
+class MetaSettings(BaseGenericSetting):
     header_links = StreamField(
         [
             ("page_link", PageLinkBlock()),
             ("external_link", ExternalLinkBlock()),
         ],
         verbose_name=_("Header links"),
+        use_json_field=True
     )
 
     panels = [
-        StreamFieldPanel("header_links"),
+        FieldPanel("header_links"),
     ]
 
 
@@ -230,7 +234,7 @@ class Newsletter(models.Model):
 
 
 @register_setting
-class OgSettings(BaseSetting):
+class OgSettings(BaseGenericSetting):
     og_title = models.CharField(max_length=255)
     og_description = models.CharField(max_length=255)
     og_image = models.ForeignKey('wagtailimages.Image', null=True, blank=True, on_delete=models.SET_NULL, related_name='+')
@@ -238,7 +242,7 @@ class OgSettings(BaseSetting):
     panels = [
         FieldPanel('og_title'),
         FieldPanel('og_description'),
-        ImageChooserPanel('og_image'),
+        FieldPanel('og_image'),
     ]
 
 
@@ -257,7 +261,7 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('intro_text', classname="full"),
         FieldPanel('description_text', classname="full"),
-        ImageChooserPanel('image'),
+        FieldPanel('image'),
     ]
 
     parent_page_types = []
@@ -275,8 +279,9 @@ class GenericPage(Page):
         [('section', SectionBlock())],
         verbose_name=_('Content'),
         default='',
+        use_json_field=True
     )
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel('body'),
+        FieldPanel('body'),
     ]
