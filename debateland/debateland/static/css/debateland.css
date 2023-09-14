@@ -90,18 +90,23 @@ p {
 
 p a,
 p a:hover,
-p a:active {
+p a:active,
+li a:not(.nav-link),
+li a:not(.nav-link):hover,
+li a:not(.nav-link):active {
   font-weight: 400;
   color: #935bce;
   text-decoration: underline;
 }
 
-p a:hover {
+p a:hover, li a:not(.nav-link):hover {
   text-decoration: none;
 }
 
 p b,
-p strong {
+p strong,
+li b,
+li strong {
   font-weight: 700;
 }
 
