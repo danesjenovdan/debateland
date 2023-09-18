@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags wagtailuserbar wagtailimages_tags contact newsletter %}
+{% load static wagtailcore_tags wagtailuserbar wagtailimages_tags %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -8,7 +8,7 @@
 
         {% with self.get_site.site_name as site_name %}
             <title>
-                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+                {% if self.seo_title %}{{ self.seo_title }}{% elif self.title %}{{ self.title }}{% else %}{% block title %}{% endblock %}{% endif %}
                 {% if site_name %}- {{ site_name }}{% endif %}
             </title>
             <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ settings.home.OgSettings.og_title }}{% endif %}">
@@ -94,61 +94,8 @@
                 </nav>
             </div>
 
-            <div class="container-fluid flex-grow-1">
-                {% block content %}{% endblock %}
-            </div>
+            {% block page-content %}{% endblock %}
 
-            <footer class="container-fluid">
-                <div class="row row-light-purple">
-                    <div class="container container-narrow">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="d-flex align-items-center justify-content-center justify-center-lg-left">
-                                    <h2 class="mr-lg-2">
-                                        <span class="heading-primary">LET'S STAY</span> <span class="heading-italic">IN TOUCH</span>
-                                    </h2>
-                                    <hr class="m-0 mb-2 d-none d-lg-block flex-grow-1">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 mt-4">
-                                {% contact %}
-                            </div>
-                            <div class="col-lg-6 mt-4">
-                                <div class="row white-card">
-                                    <div class="col-12 col-md-2 col-lg-4 d-flex justify-content-center align-items-center mb-4 mb-md-0">
-                                        <img class="img-fluid" src="{% static 'img/friends.png' %}" alt="friends icon">
-                                    </div>
-                                    <div class="col-12 col-md-10 col-lg-8 text-center text-md-left">
-                                        <h6>FOLLOW US ON FACEBOOK!</h6>
-                                        <div class="fb-page" data-href="https://www.facebook.com/DNLAofficial" data-tabs="" data-width="275" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                                            <blockquote cite="https://www.facebook.com/DNLAofficial" class="fb-xfbml-parse-ignore">
-                                                <a href="https://www.facebook.com/DNLAofficial">Debate As a New Approach to Learning</a>
-                                            </blockquote>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 mt-4">
-                                {% newsletter %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container container-narrow">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <img class="footer-logo" src="{% static 'img/EU-logo.png' %}" alt="EU logo">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-12">
-                            <p class="footer-disclaimer">Debating as a New Approach to Learning project is funded with support from the Erasmus+ Programme of the European Union. This publication reflects the views only of the authors and the Commission cannot be held responsible for any use which may be made of the information contained therein.</p>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div>
 
         {# Bootstrap JS #}

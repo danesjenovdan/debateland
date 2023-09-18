@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+from django.utils.translation import gettext_lazy as _
+
+
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
@@ -29,6 +32,7 @@ INSTALLED_APPS = [
     'search',
 
     'wagtail.contrib.forms',
+    'wagtail.contrib.modeladmin',
     'wagtail.contrib.redirects',
     'wagtail.contrib.settings',
     'wagtail.embeds',
@@ -43,6 +47,8 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+    'wagtailautocomplete',
+    'jsonify',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -121,9 +127,23 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en"
 
-TIME_ZONE = 'UTC'
+LANGUAGES = (
+    ("en", _("English")),
+    ("es", _("Spanish")),
+    ("it", _("Italian")),
+    ("sl", _("Slovenian")),
+    ("lt", _("Lithuanian")),
+    ("fi", _("Finnish")),
+)
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, "locale"),
+]
+
+TIME_ZONE = "Europe/Ljubljana"
+# TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

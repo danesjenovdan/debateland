@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static i18n wagtailcore_tags translatable_name_tags lesson_tags %}
+
+{% block title %}{{ lesson.title }}{% endblock %}
+
+{% block body_class %}lesson-list-view{% endblock %}
+
+{% block page-content %}
+
+<div class="container-fluid flex-grow-1">
+    <div class="lesson">
+        <div class="container">
+            <div class="row justify-content-center my-4 my-md-7">
+                <div class="col-12 col-md-8">
+                    <div class="back-nav">
+                        <a href="/students-toolkit"><i class="icon icon--flipped icon-arrow me-3"></i>{% block back_content %}{% translate "Back to the home page" %}{% endblock %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <div class="rich-text">
+                        <h1>{{ exercise.title }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="bg-body mb-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8">
+                        <div class="lesson__content">
+                            <div class="lesson__description my-7">
+                                <div class="rich-text rich-text--large">{{ exercise.description|richtext }}</div>
+                            </div>
+                        </div>
+                        {% if exercise.answers.all %}
+                            <div class="lesson__activities-section">
+                                {% for answer in exercise.answers.all %}
+                                <div class="lesson__activity-section lesson__content">
+                                    <!-- <a id="expanded_activity_{{ answer.id }}" class="lesson__activity-section-stripe"></a> -->
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <button class="collapsed" type="button" data-toggle="collapse" data-target="#answer-{{ forloop.counter }}" aria-expanded="false" aria-controls="answer-{{ forloop.counter }}">
+                                            <span class="icon eyecon-open"></span>
+                                            <span class="icon eyecon-close"></span>
+                                            <span>{% translate "Check the answer" %}</span>
+                                        </button>
+                                        <span class="activity__title">{{ answer.title }}</span>
+                                    </div>
+                                    <div class="collapse" id="answer-{{ forloop.counter }}">
+                                        <div class="activity rich-text rich-text--large">
+                                            <div class="activity__text">{{ answer.body|richtext }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<footer class="container-fluid">
+  <div class="row footer-links py-3 pr-5 justify-content-between">
+      <div class="col-12 footer-col-lang">
+          {% get_current_language as CURRENT_LANGUAGE %}
+          {% get_available_languages as AVAILABLE_LANGUAGES %}
+          {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+
+          <span class="lang-title">{% translate "Language selection" %}</span>
+
+          {% for language in languages %}
+          <a href="/students-toolkit/?lang={{ language.code }}" class="lang-link {% if language.code == CURRENT_LANGUAGE %}active{% endif %}">{{ language.name_local|capfirst }}</a>
+          {% endfor %}
+      </div>
+  </div>
+  
+</footer>
+<footer class="container-fluid d-flex justify-content-center">
+    <div class="container-narrow">
+        <div class="row">
+            <div class="col-12 text-center">
+                <img class="footer-logo" src="{% static 'img/EU-logo.png' %}" alt="EU logo">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12">
+                <p class="footer-disclaimer">Debating as a New Approach to Learning project is funded with support from the Erasmus+ Programme of the European Union. This publication reflects the views only of the authors and the Commission cannot be held responsible for any use which may be made of the information contained therein.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock page-content %}

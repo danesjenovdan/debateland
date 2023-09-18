@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load static i18n wagtailcore_tags jsonify translatable_name_tags lesson_list_tags %}
+
+{% block title %}Students' Toolkit{% endblock title %}
+
+{% block body_class %}lesson-list-view{% endblock %}
+
+{% block page-content %}
+
+<div class="container-fluid flex-grow-1">
+  <div class="row h-100">
+    <div class="col-6 filters-half">
+      <div class="h-100 d-flex flex-column px-4">
+        <div class="filters-half-header">
+          <h1>STUDENTS’ TOOLKIT</h1>
+          <!-- <span>English</span> -->
+        </div>
+        <div class="flex-grow-1 d-flex align-items-center">
+          <form id="topic-form" action="/students-toolkit/" method="get" class="filters">
+            {% for topic in topics_form.topics %}
+              <div class="topic-button">
+                {{ topic.tag }}
+                <label for="{{ topic.id_for_label }}">
+                  {{ topic.choice_label|name_for_lang }}
+                </label>
+              </div>
+            {% endfor %}
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="list-half px-4 h-100">
+        <div>
+          <h2>{% translate "Exercises" %}</h2>
+        </div>
+        <div class="list">
+          <ol class="lesson-list">
+            {% if not exercises %}
+              {% translate "No results. Please adjust filters." %}
+            {% endif %}
+            {% for exercise in exercises %}
+            <li>
+              <a class="lesson-link" href="{% url "exercise" exercise.id exercise.title|slugify %}">
+                <h3>{{ exercise.title }}</h3>
+                <i class="icon icon-arrow"></i>
+              </a>
+            </li>
+            {% endfor %}
+          </ol>
+
+          {% if exercises.has_other_pages %}
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center my-3">
+              <li class="page-item {% if not exercises.has_previous %}disabled{% endif %}">
+                {% if exercises.has_previous %}
+                  <a class="page-link" href="?{% query_string_replace request "page" exercises.previous_page_number %}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                {% else %}
+                  <span class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </span>
+                {% endif %}
+              </li>
+
+              {% for page in exercises.paginator.elided_page_range %}
+                {% if page == exercises.paginator.ELLIPSIS %}
+                  <li class="page-item disabled">
+                    <span class="page-link">…</span>
+                  </li>
+                {% elif page == exercises.number %}
+                  <li class="page-item active" aria-current="page">
+                    <span class="page-link">{{ page }}</span>
+                  </li>
+                {% else %}
+                  <li class="page-item">
+                    <a class="page-link" href="?{% query_string_replace request "page" page %}">{{ page }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+
+              <li class="page-item {% if not exercises.has_next %}disabled{% endif %}">
+                {% if exercises.has_next %}
+                  <a class="page-link" href="?{% query_string_replace request "page" exercises.next_page_number %}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                {% else %}
+                  <span class="page-link" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </span>
+                {% endif %}
+              </li>
+            </ul>
+          </nav>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid">
+  <div class="row footer-links py-3 pr-5 justify-content-between">
+      <div class="col-12 footer-col-lang">
+          {% get_current_language as CURRENT_LANGUAGE %}
+          {% get_available_languages as AVAILABLE_LANGUAGES %}
+          {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+
+          <span class="lang-title">{% translate "Language selection" %}</span>
+
+          {% for language in languages %}
+          <a href="/students-toolkit/?lang={{ language.code }}" class="lang-link {% if language.code == CURRENT_LANGUAGE %}active{% endif %}">{{ language.name_local|capfirst }}</a>
+          {% endfor %}
+      </div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById("topic-form");
+
+  document.querySelectorAll(".topic-button input").forEach((el) => {
+    console.log(el)
+    el.addEventListener("change", (event) => {
+      form.submit()
+    })
+  })
+</script>
+
+{% endblock page-content %}

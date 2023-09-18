@@ -1,2 +1,2 @@
 from .pages import *
-from .lesson import *
+from .exercise import *
