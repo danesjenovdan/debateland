@@ -733,6 +733,10 @@ footer .footer-logo {
 	cursor: pointer;
 }
 
+.lesson-list-view .filters-half .filters .topic-button label:hover {
+	background-color: #dccdeb;
+}
+
 .lesson-list-view .filters-half .filters .topic-button input:checked + label {
 	background-color: #c7a9e5;
 }
@@ -954,8 +958,12 @@ footer .footer-logo {
 	}
 }
 
+.lesson .lesson__activities-section .lesson__activity-section .activity {
+	margin-top: 20px;
+}
+
 .lesson .lesson__activities-section .lesson__activity-section .activity__title {
-	font-size: 28px;
+	font-size: 20px;
 	font-weight: 700;
 }
 
@@ -963,7 +971,6 @@ footer .footer-logo {
 	.lesson .lesson__activities-section .lesson__activity-section .activity__title {
 		display: block;
 		margin-top: 10px;
-		font-size: 20px;
 	}
 }
  

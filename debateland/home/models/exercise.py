@@ -47,7 +47,7 @@ class Exercise(ClusterableModel):
     language = models.ForeignKey(Language, on_delete=models.PROTECT)
 
     title = models.TextField()
-    description = RichTextField(features=['h2', 'h3', 'h4', 'bold', 'italic', 'ol', 'ul', 'link', 'embed', 'hr'])
+    description = RichTextField(features=['h2', 'h3', 'h4', 'bold', 'italic', 'ol', 'ul', 'link', 'embed', 'hr', 'br', 'small'])
 
     panels = [
         FieldPanel("topic"),
