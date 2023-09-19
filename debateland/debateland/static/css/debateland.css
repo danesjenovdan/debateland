@@ -242,39 +242,6 @@ time {
   background-image: url("/static/icons/noun-arrow-2905805.svg");
 }
 
-.icon-download {
-  width: 1.33em;
-  height: 1.33em;
-  margin-top: -0.15em;
-  background-image: url("/static/icons/noun-download-4804396.svg");
-}
-
-.icon-lightbulb {
-  width: 2.5em;
-  height: 2.5em;
-  background-image: url("/static/icons/noun-lightbulb-589680-EC5F58.svg");
-}
-
-.icon-open-new-page {
-  width: 0.85em;
-  height: 0.85em;
-  margin-top: -0.15em;
-  background-image: url("/static/icons/noun-open-new-page-4116274-3072F6.svg");
-}
-
-.icon-clock {
-  width: 1.5em;
-  height: 1.5em;
-  background-image: url("/static/icons/crna-ura.svg");
-}
-
-.icon-clock-full {
-  width: 1.5em;
-  height: 1.5em;
-  background-image: url("/static/icons/modra-ura.svg");
-}
-
-
 /* CARDS */
 .box {
   border: 2px solid #000;
@@ -635,17 +602,21 @@ footer .footer-logo {
 }
 
 .lesson-list-view footer .footer-col-lang {
-	text-align: end;
+	text-align: center;
 }
 
-.lesson-list-view footer .footer-col-lang span {
-	/* font-family: "Poppins - Regular"; */
+@media (min-width: 992px) {
+	.lesson-list-view footer .footer-col-lang {
+		text-align: end;
+	}
+}
+
+.lesson-list-view footer .footer-col-lang .lang-title {
 	font-weight: 700;
 }
 
 .lesson-list-view footer .footer-col-lang .lang-link {
 	color: #252525;
-	margin-left: 10px;
 	text-decoration: underline;
 }
 
@@ -653,7 +624,29 @@ footer .footer-logo {
 	text-decoration: none;
 }
 
-.lesson-list-view .filters-half {
+.lesson-list-view footer .footer-col-lang .lang-title, 
+.lesson-list-view footer .footer-col-lang .lang-link {
+	display: block;
+}
+
+@media (min-width: 992px) {
+	.lesson-list-view footer .footer-col-lang .lang-link {
+		margin-left: 10px;
+	}
+
+	.lesson-list-view footer .footer-col-lang .lang-title, 
+	.lesson-list-view footer .footer-col-lang .lang-link {
+		display: inline;
+	}
+}
+
+@media (min-width: 992px) {
+	.lesson-list-view .filters-half {
+		height: 100%;
+	}
+}
+
+.lesson-list-view .filters-half > div:first-child {
 	flex: 1;
 	background-color: #e8f6f6;
 	/* padding: 32px 32px 32px 22px; */
@@ -661,7 +654,7 @@ footer .footer-logo {
 }
 
 @media (min-width: 768px) {
-	.lesson-list-view .filters-half {
+	.lesson-list-view .filters-half > div:first-child {
 		/* padding: 96px 64px 0; */
 	}
 }
@@ -679,9 +672,9 @@ footer .footer-logo {
 	margin-bottom: 0;
 }
 
-.lesson-list-view .filters-half span {
+/* .lesson-list-view .filters-half span {
 	position: absolute
-}
+} */
 
 .lesson-list-view .filters-half .filters {
 	display: grid;
@@ -699,6 +692,7 @@ footer .footer-logo {
 @media (min-width: 1400px) {
 	.lesson-list-view .filters-half .filters {
 		gap: 30px;
+		grid-template-columns: repeat(4, 1fr);
 	}
 }
 
@@ -805,27 +799,14 @@ footer .footer-logo {
 	font-weight: 700;
 	margin-bottom: 0;
 }
- .lesson-list-view .list-half .list .lesson-list li .lesson-link .description {
-	 margin: 0;
-	 font-family: "Inter", sans-serif;
-	 font-size: 14px;
-	 font-style: italic;
+
+.lesson-list-view .list-half .list .lesson-list li .lesson-link .icon {
+	position: absolute;
+	top: 50%;
+	right: 16px;
+	transform: translateY(-20%);
 }
- .lesson-list-view .list-half .list .lesson-list li .lesson-link .description p {
-	 margin: 0;
-}
- .lesson-list-view .list-half .list .lesson-list li .lesson-link .description > *:not(:first-child) {
-	 display: none;
-}
- .lesson-list-view .list-half .list .lesson-list li .lesson-link .icon {
-	 position: absolute;
-	 top: 50%;
-	 right: 16px;
-	 transform: translateY(-20%);
-}
- /* .lesson-list-view .list-half .list .pagination .page-item.active .page-link {
-	 font-weight: 700;
-} */
+
 .lesson-list-view .pagination .page-item {
 	font-size: 16px;
 }
@@ -862,68 +843,58 @@ footer .footer-logo {
 	margin-bottom: 60px;
 }
 
+@media (max-width: 575.98px) {
+	.lesson h1 {
+		font-size: 24px;
+		line-height: 40px;
+		margin-bottom: 30px;
+	}
+}
+
 .lesson .lesson__content {
 	border: 2px solid #000000;
 	padding: 40px;
 }
 
- .lesson .lesson__content .lesson__section .lesson__section-title {
-	 display: inline-block;
-	 margin: 0;
-	 padding: 1.1em 1.5em 0.9em 1.5em;
-	 font-family: "Inter", sans-serif-serif;
-	 font-size: 18px;
-	 font-weight: 700;
-	 text-transform: uppercase;
-	 border: 1px solid black;
-}
- @media (max-width: 575.98px) {
-	 .lesson .lesson__content .lesson__section .lesson__section-title {
-		 font-size: 16px;
+@media (max-width: 575.98px) {
+	.lesson .lesson__content {
+		padding: 20px;
 	}
 }
- .lesson .lesson__content .lesson__section .lesson__section-content {
-	 margin-top: -1px;
-	 padding: 1.1em 1.5em;
-	 font-size: 18px;
-	 border: 1px solid black;
-	 position: relative;
-}
- @media (max-width: 575.98px) {
-	 .lesson .lesson__content .lesson__section .lesson__section-content {
-		 font-size: 16px;
+
+@media (max-width: 575.98px) {
+	.lesson, .lesson__activity-section .rich-text h2,
+	.lesson .lesson__description .rich-text h2 {
+		font-size: 24px;
 	}
-}
- .lesson .lesson__content .lesson__section .lesson__section-content.lesson__section-content--has-stripe {
-	 padding-left: calc(1.5em + 1rem);
-}
- @media (max-width: 575.98px) {
-	 .lesson .lesson__content .lesson__section .lesson__section-content.lesson__section-content--has-stripe {
-		 padding-left: calc(1.5em + 0.5rem);
+
+	.lesson, .lesson__activity-section .rich-text h3,
+	.lesson .lesson__description .rich-text h3 {
+		font-size: 20px;
 	}
-}
- .lesson .lesson__content .lesson__section .lesson__section-content.lesson__section-content--has-stripe .lesson__section-stripe {
-	 position: absolute;
-	 top: 0;
-	 bottom: 0;
-	 left: 0;
-	 width: 1rem;
-	 border-right: 1px solid black;
-}
- @media (max-width: 575.98px) {
-	 .lesson .lesson__content .lesson__section .lesson__section-content.lesson__section-content--has-stripe .lesson__section-stripe {
-		 width: 0.5rem;
+
+	.lesson, .lesson__activity-section .rich-text h4,
+	.lesson .lesson__description .rich-text h4 {
+		font-size: 16px;
 	}
-}
- .lesson .lesson__content .lesson__section .lesson__section-content .activity .activity__title {
-	 font-size: 16px;
-	 font-weight: 700;
-	 font-style: italic;
-	 text-transform: uppercase;
-}
- .lesson .lesson__content .lesson__section .lesson__section-content .activity .activity__title a {
-	 text-decoration: none;
-	 color: inherit;
+
+	.lesson, .lesson__activity-section .rich-text h2:not(:first-child),
+	.lesson, .lesson__activity-section .rich-text h3:not(:first-child),
+	.lesson, .lesson__activity-section .rich-text h4:not(:first-child),
+	.lesson .lesson__description .rich-text h2:not(:first-child),
+	.lesson .lesson__description .rich-text h3:not(:first-child),
+	.lesson .lesson__description .rich-text h4:not(:first-child) {
+		margin-top: 32px;
+	}
+
+	.lesson, .lesson__activity-section .rich-text p,
+	.lesson, .lesson__activity-section .rich-text li,
+	.lesson .lesson__description .rich-text p, 
+	.lesson .lesson__description .rich-text li {
+		font-size: 16px;
+		margin-bottom: 16px;
+		line-height: unset;
+	}
 }
 
 .lesson .lesson__description hr {
@@ -972,120 +943,27 @@ footer .footer-logo {
 	display: none;
 }
 
- .lesson .lesson__content .lesson__section .lesson__section-content .badges {
-	 display: flex;
-	 flex-wrap: wrap;
-	 gap: 1rem;
-}
- .lesson .lesson__content .lesson__section .lesson__section-content .badges .badge {
-	 padding: 0.33em 1.25em;
-	 font-size: 16px;
-	 font-weight: 400;
-	 border: 2px solid red;
-	 background-color: rgba(255, 0, 0, 0.15);
-}
- @media (max-width: 575.98px) {
-	 .lesson .lesson__content .lesson__section .lesson__section-content .badges .badge {
-		 font-size: 14px;
-	}
-}
- .lesson .lesson__content .lesson__section .lesson__section-content .sources .source {
-	 margin-bottom: 1rem;
-}
- .lesson .lesson__content .lesson__section .lesson__section-content .sources .source:last-child {
-	 margin-bottom: 0.25rem;
-}
- .lesson .lesson__content .lesson__section .lesson__section-content .sources .source a {
-	 font-size: 16px;
-	 font-weight: 600;
-	 color: #3072f6;
-	 text-decoration: none;
-	 border-bottom: 1px solid #3072f6;
-}
- .lesson .lesson__content .lesson__section .lesson__section-content .sources .source a:hover {
-	 text-decoration: none;
-	 border-bottom-color: transparent;
-}
- .lesson .lesson__content .lesson__section .lesson__section-content .relateds .related {
-	 margin-bottom: 1rem;
-}
- .lesson .lesson__content .lesson__section .lesson__section-content .relateds .related:last-child {
-	 margin-bottom: 0.25rem;
-}
- .lesson .lesson__content .lesson__section .lesson__section-content .relateds .related a {
-	 font-size: 16px;
-	 font-weight: 600;
-	 color: #3072f6;
-	 text-decoration: none;
-	 border-bottom: 1px solid #3072f6;
-}
- .lesson .lesson__content .lesson__section .lesson__section-content .relateds .related a:hover {
-	 text-decoration: none;
-	 border-bottom-color: transparent;
-}
 .lesson .lesson__activities-section .lesson__activity-section {
 	border-top: none;
 	background-color: #e8f6f6;
 }
- @media (max-width: 575.98px) {
-	 .lesson .lesson__content .lesson__activities-section .lesson__activity-section {
-		 padding-left: 1.5rem;
+
+@media (max-width: 575.98px) {
+	.lesson .lesson__content .lesson__activities-section .lesson__activity-section {
+		padding-left: 1.5rem;
 	}
 }
- .lesson .lesson__content .lesson__activities-section .lesson__activity-section .lesson__activity-section-stripe {
-	 position: absolute;
-	 top: 0;
-	 bottom: 0;
-	 left: 0;
-	 width: 1rem;
-	 border: 1px solid black;
+
+.lesson .lesson__activities-section .lesson__activity-section .activity__title {
+	font-size: 28px;
+	font-weight: 700;
 }
- @media (max-width: 575.98px) {
-	 .lesson .lesson__content .lesson__activities-section .lesson__activity-section .lesson__activity-section-stripe {
-		 width: 0.5rem;
-	}
-}
- .lesson .lesson__content .lesson__activities-section .lesson__activity-section .activity .activity__title {
-	 font-size: 28px;
-	 font-weight: 700;
-	 font-style: italic;
-	 text-transform: uppercase;
-}
- @media (max-width: 575.98px) {
-	 .lesson .lesson__content .lesson__activities-section .lesson__activity-section .activity .activity__title {
-		 margin-bottom: 1.5rem;
-		 font-size: 21px;
-	}
-}
-.lesson .lesson__activities-section .lesson__activity-section .activity {
-	padding-top: 40px;
-}
- .lesson .lesson__content .lesson__activities-section .lesson__activity-section .activity.rich-text h3, .lesson .lesson__content .lesson__activities-section .lesson__activity-section .activity.rich-text h4 {
-	 margin-top: 3rem;
-	 margin-bottom: 0.75rem;
-	 border-bottom: 0;
-	 font-family: "Inter", sans-serif-serif;
-	 font-weight: 700;
-}
- @media (max-width: 575.98px) {
-	 .lesson .lesson__content .lesson__activities-section .lesson__activity-section .activity.rich-text h3, .lesson .lesson__content .lesson__activities-section .lesson__activity-section .activity.rich-text h4 {
-		 margin-top: 1.5rem;
-	}
-}
- .lesson .lesson__content .lesson__activities-section .lesson__activity-section .activity.rich-text h3 {
-	 font-size: 28px;
-}
- @media (max-width: 575.98px) {
-	 .lesson .lesson__content .lesson__activities-section .lesson__activity-section .activity.rich-text h3 {
-		 font-size: 21px;
-	}
-}
- .lesson .lesson__content .lesson__activities-section .lesson__activity-section .activity.rich-text h4 {
-	 font-size: 24px;
-}
- @media (max-width: 575.98px) {
-	 .lesson .lesson__content .lesson__activities-section .lesson__activity-section .activity.rich-text h4 {
-		 font-size: 16px;
+
+@media (max-width: 575.98px) {
+	.lesson .lesson__activities-section .lesson__activity-section .activity__title {
+		display: block;
+		margin-top: 10px;
+		font-size: 20px;
 	}
 }
  

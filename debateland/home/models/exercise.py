@@ -39,7 +39,7 @@ class Topic(TranslatableName):
 class Answer(Orderable):
     exercise = ParentalKey("Exercise", on_delete=models.CASCADE, related_name="answers")
     title = models.TextField(blank=True, null=True)
-    body = RichTextField()
+    body = RichTextField(features=['ol', 'ul', 'link'])
 
 
 class Exercise(ClusterableModel):
@@ -47,7 +47,7 @@ class Exercise(ClusterableModel):
     language = models.ForeignKey(Language, on_delete=models.PROTECT)
 
     title = models.TextField()
-    description = RichTextField()
+    description = RichTextField(features=['h2', 'h3', 'h4', 'bold', 'italic', 'ol', 'ul', 'link', 'embed', 'hr'])
 
     panels = [
         FieldPanel("topic"),

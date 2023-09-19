@@ -8,8 +8,8 @@
 {% block page-content %}
 
 <div class="container-fluid flex-grow-1">
-  <div class="row h-100">
-    <div class="col-6 filters-half">
+  <div class="row filters-half">
+    <div class="col-12 col-lg-6">
       <div class="h-100 d-flex flex-column px-4">
         <div class="filters-half-header">
           <h1>STUDENTS’ TOOLKIT</h1>
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-12 col-lg-6">
       <div class="list-half px-4 h-100">
         <div>
           <h2>{% translate "Exercises" %}</h2>
@@ -101,7 +101,7 @@
 </div>
 
 <footer class="container-fluid">
-  <div class="row footer-links py-3 pr-5 justify-content-between">
+  <div class="row footer-links py-3 pr-lg-5 justify-content-between">
       <div class="col-12 footer-col-lang">
           {% get_current_language as CURRENT_LANGUAGE %}
           {% get_available_languages as AVAILABLE_LANGUAGES %}
