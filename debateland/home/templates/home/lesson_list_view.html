@@ -17,13 +17,13 @@
         </div>
         <div class="flex-grow-1 d-flex align-items-center justify-content-center">
           <form id="topic-form" action="/students-toolkit/" method="get" class="filters">
-            {% for topic in topics_form.topics %}
-              <div class="topic-button">
-                {{ topic.tag }}
-                <label for="{{ topic.id_for_label }}">
-                  {{ topic.choice_label|name_for_lang }}
-                </label>
-              </div>
+            {% for topic in topics_form.topic %}
+            <div class="topic-button">
+              {{ topic.tag }}
+              <label for="{{ topic.id_for_label }}">
+                {{ topic.choice_label|name_for_lang }}
+              </label>
+            </div>
             {% endfor %}
           </form>
         </div>
@@ -115,6 +115,7 @@
       </div>
   </div>
 </footer>
+
 
 <script>
   const form = document.getElementById("topic-form");

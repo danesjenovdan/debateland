@@ -37,32 +37,30 @@ class ExerciseListView(View):
     def get(self, request):
 
         new_language = None
-        if lang := self.request.GET.get("lang"):
-            if lang in VALID_LANG_IDS:
-                new_language = lang
-                translation.activate(new_language)
 
-        if not new_language:
+        lang = self.request.GET.get("lang")
+        if lang and lang in VALID_LANG_IDS:
+            translation.activate(lang)
+            new_language = lang
+        else:
             lang = translation.get_language()
+            if not lang:
+                lang = "en"
 
         collator = Collator.createInstance(Locale(lang))
-        name_attr = "name" if lang == "en" else f"name_{lang}"
 
         exercises = Exercise.objects.filter(language__code=lang)
 
         topics_form = ChosenTopicsForm(request.GET)
         if topics_form.is_valid():
-            chosen_topics = topics_form.cleaned_data['topics']
-            if chosen_topics:
-                exercises = exercises.filter(topic__in=chosen_topics)
+            chosen_topic = topics_form.cleaned_data['topic']
+            if chosen_topic:
+                exercises = exercises.filter(topic=chosen_topic)
 
-
-        sorted_exercises = sorted(
-            exercises.distinct(), key=lambda o: collator.getSortKey(o.title)
-        )
-
-        paginator = Paginator(sorted_exercises, 8)
         page_number = self.request.GET.get("page")
+        if not page_number:
+            exercises = exercises.order_by('?')
+        paginator = Paginator(exercises, 8)
         page_exercises = paginator.get_page(page_number)
 
         paginator.elided_page_range = paginator.get_elided_page_range(
