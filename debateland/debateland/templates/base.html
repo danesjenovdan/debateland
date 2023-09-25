@@ -104,6 +104,13 @@
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/debateland.js' %}?cacheme=3"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fitvids@2/dist/fitvids.min.js"></script>
+        <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            // Ensure embedded videos are responsive
+            fitvids();
+        });
+        </script>
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
