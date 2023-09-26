@@ -704,16 +704,16 @@ footer .footer-logo {
 	}
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1600px) {
 	.lesson-list-view .filters-half .filters {
 		gap: 30px;
-		grid-template-columns: repeat(4, 1fr);
 	}
 }
 
 @media (min-width: 1602px) {
 	.lesson-list-view .filters-half .filters {
 		gap: 50px;
+    grid-template-columns: repeat(4, 1fr);
 	}
 
 }
