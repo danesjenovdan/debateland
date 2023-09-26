@@ -663,6 +663,21 @@ footer .footer-logo {
 	position: relative;
 }
 
+.lesson-list-view .reset-filters-button {
+  text-align: end;
+}
+
+.lesson-list-view .reset-filters-button a {
+  color: #252525;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.lesson-list-view .reset-filters-button a:hover {
+  text-decoration: none;
+}
+
 .lesson-list-view .filters-half h1 {
 	font-family: "Balsamiq Sans";
 	font-size: 48px;
@@ -828,14 +843,16 @@ footer .footer-logo {
 
 /* SINGLE LESSON */
 
-.back-nav a {
+.back-nav button {
 	color: #252525;
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 60px;
+  background-color: transparent;
+  border: none;
 }
 
-.back-nav a i {
+.back-nav button i {
 	margin-right: 10px;
 }
 
