@@ -33,25 +33,32 @@ def map_attr(objects, key):
     return list(map(lambda o: getattr(o, key), objects))
 
 
-class ExerciseListView(View):
-    def get(self, request):
+class ExerciseListView(TemplateView):
+    template_name = "home/lesson_list_view.html"
 
+    def get(self, request, *args, **kwargs):
         new_language = None
+        if lang := self.request.GET.get("lang"):
+            if lang in VALID_LANG_IDS:
+                new_language = lang
+                translation.activate(new_language)
 
-        lang = self.request.GET.get("lang")
-        if lang and lang in VALID_LANG_IDS:
-            translation.activate(lang)
-            new_language = lang
-        else:
-            lang = translation.get_language()
-            if not lang:
-                lang = "en"
+        response = super().get(request, *args, **kwargs)
 
+        if new_language:
+            response.set_cookie(settings.LANGUAGE_COOKIE_NAME, new_language)
+
+        return response
+    
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        lang = translation.get_language()
         collator = Collator.createInstance(Locale(lang))
-
         exercises = Exercise.objects.filter(language__code=lang)
 
-        topics_form = ChosenTopicsForm(request.GET)
+        topics_form = ChosenTopicsForm(self.request.GET)
         if topics_form.is_valid():
             chosen_topic = topics_form.cleaned_data['topic']
             if chosen_topic:
@@ -68,13 +75,8 @@ class ExerciseListView(View):
             on_each_side=2,
             on_ends=1,
         )
+    
+        context["exercises"] = exercises
+        context["topics_form"] = topics_form
 
-        response = render(request, "home/lesson_list_view.html", context={ 
-            "exercises": page_exercises, 
-            "topics_form": topics_form, 
-        })
-
-        if new_language:
-            response.set_cookie(settings.LANGUAGE_COOKIE_NAME, new_language)
-        
-        return response
+        return context
